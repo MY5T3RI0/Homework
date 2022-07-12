@@ -48,9 +48,9 @@ namespace MyDB
                     Console.WriteLine(item);
                 }
 
-                var seconElem = context.Groups.First();
+                //var seconElem = context.Groups.First();
 
-                Console.WriteLine(seconElem);
+                //Console.WriteLine(seconElem);
 
                 //Console.WriteLine(group);
 
