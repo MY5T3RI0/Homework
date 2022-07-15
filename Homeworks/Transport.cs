@@ -13,6 +13,11 @@ namespace Homeworks
             MaxSpeed = maxSpeed;
         }
 
+        public Transport()
+        {
+            
+        }
+
         private string _type;
         public string Type
         {

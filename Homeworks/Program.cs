@@ -272,7 +272,40 @@ namespace Homeworks
             //}
             #endregion
 
-            
+            #region extension
+            //var n = 7;
+            //Console.WriteLine(n.fact());
+            #endregion
+
+            #region indexator
+            //List<Car> cars = new List<Car>()
+            //{
+            //    new Car("Ford", "A001AA01"),
+            //    new Car("Lada", "B727ET77")
+            //};
+
+            //Parking parking = new Parking();
+
+            //foreach (Car car in cars)
+            //{
+            //    parking.AddCar(car);
+            //}
+
+            //foreach (var name in parking.GetNumbers())
+            //{
+            //    Console.WriteLine("Имя:" + name);
+            //}
+
+            //Console.WriteLine(parking["A001AA01"]);
+            //Console.WriteLine(parking["A001AA02"]);
+
+            //Console.WriteLine("Введите номер нового автомобиля");
+            //var num = Console.ReadLine();
+
+            //parking[1] = new Car("BMW", num);
+
+            //Console.WriteLine(parking[1]); 
+            #endregion
 
             Console.ReadLine();
 
