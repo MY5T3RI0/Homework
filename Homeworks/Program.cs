@@ -307,8 +307,31 @@ namespace Homeworks
             //Console.WriteLine(parking[1]); 
             #endregion
 
+            var anonim = new
+            {
+                Name = "ИМЯ",
+                Years = 5
+            };
+
+            Console.WriteLine(anonim.Name);
+
+            var tuple = (Name: "Tomato", Energy: 20);
+
+            Console.WriteLine(tuple.Name);
+
+            Console.WriteLine(GetData());
+
             Console.ReadLine();
 
+        }
+
+        public static (int Number, string Name, bool Flag) GetData()
+        {
+            var number = 7821;// метод получения данных
+            var name = Guid.NewGuid().ToString(); // метод получения данных
+            bool b = number > 500; // проверка уловия
+
+            return (number, name, b);
         }
 
         static async Task<bool> GetNumbersAsync(int max)
