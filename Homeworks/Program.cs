@@ -21,6 +21,8 @@ namespace Homeworks
 
         public static object locker = new object();
 
+        public delegate int MyHandler(int i);
+
         static void Main(string[] args)
         {
             #region collections
@@ -153,10 +155,21 @@ namespace Homeworks
 
             #endregion
 
+            #region constructor
+
+            Bycicle b = new Bycicle("Land", "Yellow", 30);
+
+            Car c1 = new Car("Land", "White", 120, "v6", 5);
+            c1.Mark = "Ford";
+
+            Car c2 = new Car("Land", "Red", 150, "v12", 10);
+
+            #endregion
+
             #region events
 
-            //c1.Fuelling += Car_Fuelling;
-            //c1.ContinueRacing += Car_ContinueRacing;
+            //c1.LowFuell += Car_LowFuell;
+            //c1.FullFuel += Car_FullFuel;
 
             //c1.Fuel = 10;
             //c1.FuelCheck(c1);
@@ -188,17 +201,6 @@ namespace Homeworks
             //Console.WriteLine("Новый цвет машины: " + c1.Color);
 
             //Console.WriteLine("Тип транспорта: " + c1.Type);
-
-            #endregion
-
-            #region constructor
-
-            Bycicle b = new Bycicle("Land", "Yellow", 30);
-
-            Car c1 = new Car("Land", "White", 120, "v6", 5);
-            c1.Mark = "Ford";
-
-            Car c2 = new Car("Land", "Red", 150, "v12", 10);
 
             #endregion
 
@@ -307,22 +309,79 @@ namespace Homeworks
             //Console.WriteLine(parking[1]); 
             #endregion
 
-            var anonim = new
-            {
-                Name = "ИМЯ",
-                Years = 5
-            };
+            #region tuple
+            //var anonim = new
+            //{
+            //    Name = "ИМЯ",
+            //    Years = 5
+            //};
 
-            Console.WriteLine(anonim.Name);
+            //Console.WriteLine(anonim.Name);
 
-            var tuple = (Name: "Tomato", Energy: 20);
+            //var tuple = (Name: "Tomato", Energy: 20);
 
-            Console.WriteLine(tuple.Name);
+            //Console.WriteLine(tuple.Name);
 
-            Console.WriteLine(GetData());
+            //Console.WriteLine(GetData());
+            #endregion
+
+            #region lambda
+            //var list = new List<int>();
+
+            //for (int i = 0; i < 10; i++)
+            //    list.Add(i);
+
+            //var result1 = Agr(list, Method);
+
+            //Console.WriteLine("\n");
+
+            //var result2 = Agr(list, x => x * x);
+
+            //Console.WriteLine("\n");
+
+            //var result3 = Agr(list, delegate (int i)
+            //{
+            //    i += i + 1;
+            //    Console.WriteLine(i);
+            //    return i;
+            //});
+
+            //Console.WriteLine();
+
+            //c1.ChargedFuell += (sender, Fuel) =>
+            //{
+            //    Console.WriteLine($"{sender} был заправлен до {Fuel} литров");
+            //};
+
+            //c1.Fuel = 30;
+            //c1.FuelCheck(c1); 
+            #endregion
 
             Console.ReadLine();
 
+        }
+
+        public static int Method (int i) 
+        {
+            var result = i + i;
+
+            Console.WriteLine(result);
+
+            return result;
+        }
+
+        public static int Agr(List<int> list, MyHandler handle)
+        {
+            var result = 0;
+
+            foreach (int item in list)
+            {
+                result += handle(item);
+            }
+
+            Console.Write("\nResult = " + result);
+
+            return result;
         }
 
         public static (int Number, string Name, bool Flag) GetData()
@@ -376,12 +435,12 @@ namespace Homeworks
             return true;
         }
 
-        private static void Car_ContinueRacing(int volume)
+        private static void Car_FullFuel(int volume)
         {
             Console.WriteLine($"Едем дальше, в баке еще {volume} литров");
         }
 
-        private static void Car_Fuelling()
+        private static void Car_LowFuel()
         {
             Console.WriteLine("Едем на заправку");
         }

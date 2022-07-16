@@ -5,8 +5,11 @@ namespace Homeworks
 {
     public class Car : Transport, ILand
     {
-        public event Action Fuelling;
-        public event Action<int> ContinueRacing;
+        public event Action LowFuell;
+        public event Action<int> FullFuel;
+
+        public event EventHandler<int> ChargedFuell;
+
 
         public List<string> Numbers = new List<string>();
 
@@ -41,10 +44,12 @@ namespace Homeworks
 
         public void FuelCheck(Car car)
         {
-            if (car.Fuel < 5)
-                Fuelling?.Invoke();
+            if (car.Fuel == 30)
+                ChargedFuell?.Invoke(this, car.Fuel);
+            else if (car.Fuel < 5)
+                LowFuell?.Invoke();
             else
-                ContinueRacing?.Invoke(car.Fuel);
+                FullFuel?.Invoke(car.Fuel);
 
         }
 
