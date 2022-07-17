@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Homeworks
 {
-    [Geo(10, 20)]
+    [DataContract]
     public class Car : Transport, ILand
     {
         public event Action LowFuell;
         public event Action<int> FullFuel;
         public event EventHandler<int> ChargedFuell;
-        public Action<int> GetNumbers = Car_GetNumbers;
 
-        public static List<string> Numbers = new List<string>();
+        public static List<string> marks = new List<string>()
+        {
+            new string("Kia"),
+            new string("BMW"),
+            new string("Ford"),
+            new string("Honda"),
+            new string("Hyundai")
+        };
 
         public Car(string type, string color, int maxSpeed, string engine, int capasity) : base(type, color, maxSpeed)
         {
@@ -22,14 +29,15 @@ namespace Homeworks
             Capasity = capasity;
         }
 
-        Random rand = new Random();
+        [NonSerialized]
+        private readonly Random rand = new Random();
 
         [Geo(10, 20)]
-        public Car(string mark)
+        public Car()
         {
-            Mark = mark;
-            GetNumbers?.Invoke(500);
-            Number = Numbers[rand.Next(0, 499)];
+            Mark = marks[rand.Next(0, 4)];
+            List<string> numbers = Car_GetNumbers(100);
+            Number = numbers[rand.Next(0, 99)];
         }
 
         public Car(string mark, string number)
@@ -37,13 +45,15 @@ namespace Homeworks
             Mark = mark;
             Number = number;
         }
-
+        
         public string Engine { get; set; }
         public int Capasity { get; set; }
         public bool Nitro { get; set; } = false;
         [Geo(10, 20)]
+        [DataMember]
         public string Mark { get; set; }
         public int Fuel { get; set; }
+        [DataMember]
         public string Number { get; set; }
 
         public void FuelCheck(Car car)
@@ -62,7 +72,7 @@ namespace Homeworks
             return distanse / 100;          
         }
 
-        public void Boost() 
+        public void Boost()
         {
 
             if (Nitro == false)
@@ -72,14 +82,15 @@ namespace Homeworks
             }
             else
                 throw new MyException(this, "Ускорение уже активировано");
-            
+
         }
 
-        public static void Car_GetNumbers(int max)
+        public List<string> Car_GetNumbers(int max)
         {
             Random rnd = new Random();
+            List<string> numbers = new List<string>();
 
-            for (int i = 0; i < max; i++)
+            for (int i = 0; i < 100; i++)
             {
                 char c = Convert.ToChar(rnd.Next(65, 90));
 
@@ -89,8 +100,10 @@ namespace Homeworks
 
                 number += c + Convert.ToString(j) + Convert.ToString(Convert.ToChar(rnd.Next(65, 90))) + Convert.ToString(Convert.ToChar(rnd.Next(65, 90)));
 
-                Numbers.Add(number);
+                numbers.Add(number); 
             }
+
+            return numbers;
         }
 
         public static int operator + (Car firstCar, Car secondCar)

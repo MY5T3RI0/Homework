@@ -4,9 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Homeworks
 {
@@ -158,12 +161,12 @@ namespace Homeworks
 
             #region constructor
 
-            Bycicle b = new Bycicle("Land", "Yellow", 30);
+            //Bycicle b = new Bycicle("Land", "Yellow", 30);
 
-            Car c1 = new Car("Land", "White", 120, "v6", 5);
-            c1.Mark = "Ford";
+            //Car c1 = new Car("Land", "White", 120, "v6", 5);
+            //c1.Mark = "Ford";
 
-            Car c2 = new Car("Land", "Red", 150, "v12", 10);
+            //Car c2 = new Car("Land", "Red", 150, "v12", 10);
 
             #endregion
 
@@ -378,6 +381,74 @@ namespace Homeworks
             //        Console.WriteLine(prop.PropertyType + " " + prop.Name);
             //    }
             //} 
+            #endregion
+
+            #region serialization
+            //Car c = new Car();
+
+            //var cars = new List<Car>();
+
+            //for (int i = 0; i < 15; i++)
+            //{
+            //    cars.Add(new Car());
+            //}
+
+            //Console.WriteLine("BinaryFormatter");
+
+            //var binnarySerializer = new BinaryFormatter();
+
+            //using (var file = new FileStream("cars.bin", FileMode.OpenOrCreate))
+            //{
+            //    binnarySerializer.Serialize(file, cars);
+            //}
+
+            //using (var file = new FileStream("cars.bin", FileMode.OpenOrCreate))
+            //{
+            //    var newCars = binnarySerializer.Deserialize(file) as List<Car>;
+
+            //    foreach (var car in newCars)
+            //    {
+            //        Console.WriteLine(car);
+            //    }
+            //}
+
+            //Console.WriteLine("\nXmlSerializer");
+
+            //var xmlSerializer = new XmlSerializer(typeof(List<Car>));
+
+            //using (var file = new FileStream("cars.xml", FileMode.OpenOrCreate))
+            //{
+            //    xmlSerializer.Serialize(file, cars);
+            //}
+
+            //using (var file = new FileStream("cars.xml", FileMode.OpenOrCreate))
+            //{
+            //    var newCars = xmlSerializer.Deserialize(file) as List<Car>;
+
+            //    foreach (var car in newCars)
+            //    {
+            //        Console.WriteLine(car);
+            //    }
+            //}
+
+            //Console.WriteLine("DataContractJsonSerializer");
+
+            //var jsonSerializer = new DataContractJsonSerializer(typeof(List<Car>));
+
+            //using (var file = new FileStream("cars.json", FileMode.Create))
+            //{
+            //    jsonSerializer.WriteObject(file, cars);
+            //}
+
+            //using (var file = new FileStream("cars.json", FileMode.OpenOrCreate))
+            //{
+            //    var newCars = jsonSerializer.ReadObject(file) as List<Car>;
+
+            //    foreach (var car in newCars)
+            //    {
+            //        Console.WriteLine(car);
+            //    }
+            //}
             #endregion
 
 
