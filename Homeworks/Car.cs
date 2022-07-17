@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace Homeworks
 {
+    [Geo(10, 20)]
     public class Car : Transport, ILand
     {
         public event Action LowFuell;
         public event Action<int> FullFuel;
-
         public event EventHandler<int> ChargedFuell;
+        public Action<int> GetNumbers = Car_GetNumbers;
 
-
-        public List<string> Numbers = new List<string>();
+        public static List<string> Numbers = new List<string>();
 
         public Car(string type, string color, int maxSpeed, string engine, int capasity) : base(type, color, maxSpeed)
         {
@@ -23,10 +23,13 @@ namespace Homeworks
         }
 
         Random rand = new Random();
+
+        [Geo(10, 20)]
         public Car(string mark)
         {
             Mark = mark;
-            Number = Numbers[rand.Next(1, 500)];
+            GetNumbers?.Invoke(500);
+            Number = Numbers[rand.Next(0, 499)];
         }
 
         public Car(string mark, string number)
@@ -38,6 +41,7 @@ namespace Homeworks
         public string Engine { get; set; }
         public int Capasity { get; set; }
         public bool Nitro { get; set; } = false;
+        [Geo(10, 20)]
         public string Mark { get; set; }
         public int Fuel { get; set; }
         public string Number { get; set; }
@@ -71,7 +75,7 @@ namespace Homeworks
             
         }
 
-        public void GetNumbers(int max)
+        public static void Car_GetNumbers(int max)
         {
             Random rnd = new Random();
 

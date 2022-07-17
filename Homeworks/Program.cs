@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -357,8 +358,31 @@ namespace Homeworks
             //c1.FuelCheck(c1); 
             #endregion
 
-            Console.ReadLine();
+            #region property
+            //var car = new Car("lada");
+            //Console.WriteLine(car);
+            //var type = typeof(Car);
+            //var attributes = type.GetCustomAttributes(false);
+            //foreach (var attribute in attributes)
+            //{
+            //    Console.WriteLine(attribute);
+            //}
 
+            //var properties = type.GetProperties();
+            //foreach (var prop in properties)
+            //{
+            //    var attrs = prop.GetCustomAttributes(false);
+
+            //    if (attrs.Any(a => a.GetType() == typeof(GeoAttribute)))
+            //    {
+            //        Console.WriteLine(prop.PropertyType + " " + prop.Name);
+            //    }
+            //} 
+            #endregion
+
+
+
+            Console.ReadLine();
         }
 
         public static int Method (int i) 
