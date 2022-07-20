@@ -451,7 +451,40 @@ namespace Homeworks
             //}
             #endregion
 
+            #region unsafe
+            //unsafe
+            //{
 
+            //    int i = 30;
+
+            //    int* address = &i;
+
+            //    Console.WriteLine(*address);
+            //    Console.WriteLine((long)address);
+
+            //    int a = 5;
+            //    int b = 7;
+
+            //    Console.WriteLine(*(&a + 4));
+
+            //    Console.WriteLine(a);
+            //    Console.WriteLine(b);
+
+            //    int* address2 = address + 4;
+            //    *address2 = 777;
+            //    Console.WriteLine(*address2);
+
+            //    Console.WriteLine();
+
+
+            //    int** adr = &address;
+            //    Console.WriteLine((long)adr);
+            //    Console.WriteLine((long)*adr);
+            //    Console.WriteLine(**adr);
+
+            //    Console.ReadLine();
+            //} 
+            #endregion
 
             Console.ReadLine();
         }
